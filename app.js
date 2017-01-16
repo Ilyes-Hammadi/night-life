@@ -6,6 +6,8 @@ var Yelp = require('yelp');
 var app = express()
 app.use(cors())
 
+app.set('port', (process.env.PORT || 5000));
+
 // Setup static files
 app.use('/static', express.static(path.join(__dirname, '/build/static')))
 
@@ -36,6 +38,6 @@ app.get('/search', (req, res) => {
     });
 })
 
-app.listen(4000, function() {
-  console.log('Example app listening on port 4000!')
-})
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
