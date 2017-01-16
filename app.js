@@ -13,10 +13,10 @@ app.use('/static', express.static(path.join(__dirname, '/build/static')))
 
 // Setup Yelp API credentials
 var yelp = new Yelp({
-  consumer_key: 'consumer_key',
-  consumer_secret: 'consumer_secret',
-  token: 'token',
-  token_secret: 'token_secret',
+  consumer_key: 'KBi3c2r8SkkWCVmQ2KOdSg',
+  consumer_secret: 'cHqYNM7jUAuzVdD9TSckjUgnbRA',
+  token: '-WScjm5JnF0N8hlS4lbvW-1Y3LrPIruU',
+  token_secret: 'xLySkypWm2q4WbWMAegHZ_0Ny1Q',
 });
 
 
