@@ -21,12 +21,12 @@ class SearchBar extends React.Component {
   }
 
   onSearchButtonClick(){
-    search()
+    this.search()
   }
-  
+
   onEnterPressed(e) {
     if (e.charCode == 13) {
-      search()
+      this.search()
     }
   }
 
@@ -47,6 +47,7 @@ class SearchBar extends React.Component {
 
     })
   }
+
   render() {
     return (
       <Grid>
@@ -54,10 +55,10 @@ class SearchBar extends React.Component {
           <Col md={8} mdOffset={2}>
             <Row>
               <Col xs={12} md={8}>
-                <FormControl id="search-bar" onChange={this.getLocation.bind(this)} onKeyPress={this.search.bind(this)}/>
+                <FormControl id="search-bar" onChange={this.getLocation.bind(this)} onKeyPress={this.onEnterPressed.bind(this)}/>
               </Col>
               <Col xs={12} md={4}>
-                <Button id="search-btn" bsStyle='primary' onClick={this.search.bind(this)}>Search</Button>
+                <Button id="search-btn" bsStyle='primary' onClick={this.onSearchButtonClick.bind(this)}>Search</Button>
               </Col>
             </Row>
             <List bars={this.state.bars} userRef={this.props.userRef}/>
