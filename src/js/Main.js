@@ -30,9 +30,9 @@ class Main extends React.Component {
   }
 
   login() {
-    var provider = new firebase.auth.signInWithPopup();
+    var provider = new firebase.auth.TwitterAuthProvider();
 
-    firebase.auth().signInWithRedirect(provider).then((result) => {
+    firebase.auth().signInWithPopup(provider).then((result) => {
       // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
       // You can use these server side with your app's credentials to access the Twitter API.
       var token = result.credential.accessToken;
@@ -66,6 +66,7 @@ class Main extends React.Component {
       // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
       // ...
+      console.log(error);
     });
   }
 
