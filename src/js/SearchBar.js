@@ -20,27 +20,33 @@ class SearchBar extends React.Component {
     this.setState({query: e.target.value});
   }
 
-  search() {
-    axios.get('https://' + window.location.hostname +'/search/?location=' + this.state.query)
-      .then((res) => {
-        // Update the state
-        this.setState({
-          bars: res.data
-        });
-
-        // Save the searched location
-        let savedSearch = {
-          query: this.state.query,
-          time: new Date().getTime()
-        }
-
-        if(this.props.userRef) {
-          this.props.userRef.child('/saved-search').push(savedSearch)
-        }
-
-      })
+  onSearchButtonClick(){
+    search()
+  }
+  
+  onEnterPressed(e) {
+    if (e.charCode == 13) {
+      search()
+    }
   }
 
+  search() {
+    axios.get('https://' + window.location.hostname + '/search/?location=' + this.state.query).then((res) => {
+      // Update the state
+      this.setState({bars: res.data});
+
+      // Save the searched location
+      let savedSearch = {
+        query: this.state.query,
+        time: new Date().getTime()
+      }
+
+      if (this.props.userRef) {
+        this.props.userRef.child('/saved-search').push(savedSearch)
+      }
+
+    })
+  }
   render() {
     return (
       <Grid>
@@ -48,7 +54,7 @@ class SearchBar extends React.Component {
           <Col md={8} mdOffset={2}>
             <Row>
               <Col xs={12} md={8}>
-                <FormControl id="search-bar" onChange={this.getLocation.bind(this)}/>
+                <FormControl id="search-bar" onChange={this.getLocation.bind(this)} onKeyPress={this.search.bind(this)}/>
               </Col>
               <Col xs={12} md={4}>
                 <Button id="search-btn" bsStyle='primary' onClick={this.search.bind(this)}>Search</Button>
