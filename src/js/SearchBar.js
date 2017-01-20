@@ -21,7 +21,7 @@ class SearchBar extends React.Component {
   }
 
   search() {
-    axios.get('http://' + window.location.hostname +'/search/?location=' + this.state.query)
+    axios.get('https://' + window.location.hostname +'/search/?location=' + this.state.query)
       .then((res) => {
         // Update the state
         this.setState({
