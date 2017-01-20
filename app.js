@@ -25,13 +25,14 @@ app.get('/', function(req, res) {
 })
 
 app.get('/search', (req, res) => {
+  let barsLimit = 30;
   yelp.search({
       location: req.query.location,
       category_filter:'bars',
     })
     .then(function(data) {
       let jsonData = data.businesses
-      res.json(jsonData.slice(0, 10))
+      res.json(jsonData.slice(0, barsLimit))
     })
     .catch(function(err) {
       console.error(err);
