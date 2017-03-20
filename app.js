@@ -15,8 +15,8 @@ app.use('/static', express.static(path.join(__dirname, '/build/static')))
 var yelp = new Yelp({
   consumer_key: 'KBi3c2r8SkkWCVmQ2KOdSg',
   consumer_secret: 'cHqYNM7jUAuzVdD9TSckjUgnbRA',
-  token: '-WScjm5JnF0N8hlS4lbvW-1Y3LrPIruU',
-  token_secret: 'xLySkypWm2q4WbWMAegHZ_0Ny1Q',
+  token: 'DiNzfQ0ydz-5oydrhf6BIlrx4bTIEq9Y',
+  token_secret: 'mSX4GfZjslXR_VJAOME0G3BC5k4',
 });
 
 
